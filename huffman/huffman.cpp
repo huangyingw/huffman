@@ -138,7 +138,6 @@ int main()
     lable data[30];
     char s[100],*p;
     int i,count=0;
-    for (;;)
     {
         cout<<"         /    求哈夫曼编码,直到输入为end结束!            /"<<endl;
         printf("         Input some letters:");
@@ -181,6 +180,5 @@ int main()
         HuffmanCode(count,data);
         count=0;
     }
-    getch();
 }
 
