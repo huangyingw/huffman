@@ -1,0 +1,1 @@
+for /f "eol=; tokens=1-9 delims=," %%a in (.gitignore) do git rm --cached "%%a" -f
