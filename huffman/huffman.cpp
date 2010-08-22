@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #define MAX 21
-//#include "Huffman.h"
+#include "Huffman.h"
 
 #include<stdio.h>
 #include<conio.h>
@@ -136,38 +136,29 @@ void HuffmanCode(int n,lable a[])
 int main()
 {
     lable data[30];
-    char s[100],*p;
+    char s[100],*user_input;
     int i,count=0;
+    Huffman *huffman=new Huffman();
     {
-        cout<<"         /    求哈夫曼编码,直到输入为end结束!            /"<<endl;
-        printf("         Input some letters:");
-        scanf("%s",s);
-        if (!strcmp(s,"end"))
-            exit(0);
-        for (i=0;i<30;i++)
-        {
-            data[i].s=0;
-            data[i].num=0;
-        }
-        p=s;
-        while (*p)     /*计算字符个数与出现次数(即权值)*/
+        user_input=s;
+        while (*user_input)     /*计算字符个数与出现次数(即权值)*/
         {
             for (i=0;i<=count+1;i++)
             {
                 if (data[i].s==0)
                 {
-                    data[i].s=*p;
+                    data[i].s=*user_input;
                     data[i].num++;
                     count++;
                     break;
                 }
-                else if (data[i].s==*p)
+                else if (data[i].s==*user_input)
                 {
                     data[i].num++;
                     break;
                 }
             }
-            p++;
+            user_input++;
         }
         printf("\n");
         printf("         different letters:%d\n",count);

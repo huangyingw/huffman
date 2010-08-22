@@ -1,3 +1,4 @@
+#include<iostream>
 using namespace std;
 
 typedef struct 
@@ -31,7 +32,17 @@ public:
 
 Huffman::Huffman()
 {
-	
+/*
+	cout<<"         /    求哈夫曼编码,直到输入为end结束!            /"<<endl;
+  printf("         Input some letters:");
+  scanf("%s",s);
+  if (!strcmp(s,"end"))
+      exit(0);
+  for (i=0;i<30;i++)
+  {
+      data[i].s=0;
+      data[i].num=0;
+  }*/
 }
 
 void Huffman::CreateHuffman()
