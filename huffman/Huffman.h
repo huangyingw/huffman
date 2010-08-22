@@ -49,13 +49,16 @@ private:
 	int nodeNum;
 	HuffNode *huffNode;
 	HuffCode *huffCode;
+	int count;
 	ofstream fout;
+	
 
 public:
 	lable data[30];
 	Huffman();
 	~Huffman();
 	void CreateHuffman();
+	void PrintWeight();
 	void HuffmanCode(int n,lable a[]);
 	void HuffmanTree(HNodeType HuffNode[],int n,lable a[]);
 };
@@ -163,9 +166,10 @@ Huffman::~Huffman()
 
 Huffman::Huffman()
 {
+	count=0;
 	fout.open("output.txt");
 	char *user_input;
-	int i,count=0;
+	int i;
 
 	char s[100]="feifjakdfjioejfkdsifwfasdfawffawefawefawfafds";
 	for (i=0;i<30;i++)
@@ -193,15 +197,18 @@ Huffman::Huffman()
       }
       user_input++;
   }
-  fout<<"different letters:"<<count<<"\n";
-
-  for (i=0;i<count;i++)
-  {
-      fout<<"         "<<data[i].s<<" ";
-      fout<<"weight:"<<data[i].num<<"\n";
-  }
   HuffmanCode(count,data);
 
+}
+
+void Huffman::PrintWeight()
+{
+	fout<<"different letters:"<<count<<"\n";
+  for (int nav=0;nav<count;nav++)
+  {
+      fout<<"         "<<data[nav].s<<" ";
+      fout<<"weight:"<<data[nav].num<<"\n";
+  }
 }
 
 void Huffman::CreateHuffman()
