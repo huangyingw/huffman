@@ -57,7 +57,6 @@ public:
 	lable data[30];
 	Huffman();
 	~Huffman();
-	void CreateHuffman();
 	void PrintWeight();
 	void HuffmanCode();
 	void HuffmanTree(HNodeType HuffNode[],int n,lable a[]);
@@ -174,7 +173,7 @@ Huffman::Huffman()
 	char s[100]="feifjakdfjioejfkdsifwfasdfawffawefawefawfafds";
 	for (i=0;i<30;i++)
 	{
-	    data[i].s=0;
+    data[i].s=0;
 		data[i].num=0;
 	}
 	user_input=s;
@@ -197,8 +196,6 @@ Huffman::Huffman()
       }
       user_input++;
   }
-  
-
 }
 
 void Huffman::PrintWeight()
@@ -209,44 +206,4 @@ void Huffman::PrintWeight()
       fout<<data[nav].s<<" ";
       fout<<"weight:"<<data[nav].num<<"\n";
   }
-}
-
-void Huffman::CreateHuffman()
-{
-	//先把数组初始化
-	for(int i=1;i<=2*nodeNum-1;i++)
-		huffNode[i].parent=huffNode[i].left=huffNode[i].right=0;
-	
-	//以下部分生成huffman树，但应该还有改进的余地。
-	//此处为什么是2*nodeNum-1?
-	for(int i=nodeNum+1;i<=2*nodeNum-1;i++)
-	{
-		//l存储左子节点的编号，r存储右子节点的编号
-		//其中左子节点要小于右子节点
-		//l是最小节点
-		int l,r;
-		l=r=0;
-		//此处m1存储最小值，m2存储次小值
-		int m1,m2;
-		m1=m2=20000;
-		for(int j=1;j<i;j++)
-		{
-			if(huffNode[j].weight<m1&&huffNode[j].parent==0)
-			{
-				m2=m1;
-				r=l;
-				m1=	huffNode[j].weight;
-				l=j;
-			}
-			else if(huffNode[j].weight<m2&&huffNode[j].parent==0)
-			{
-				m2=	huffNode[j].weight;
-				r=j;
-			}
-		}
-		huffNode[l].parent=huffNode[r].parent=i;
-		huffNode[i].left=l;
-		huffNode[i].right=r;
-		huffNode[i].weight=m1+m2;
-	}
 }
