@@ -148,11 +148,11 @@ void Huffman::HuffmanCode(int n,lable a[])
     for (i=0;i<n;i++)
     {
         HuffCode[i].letter=HuffNode[i].letter;
-        printf("         %c ",HuffCode[i].letter);
+        fout<<"         "<<HuffCode[i].letter<<" ";
 
         for (j=HuffCode[i].start+1;j<n;j++)
-            printf("%d",HuffCode[i].bit[j]);
-        printf("\n");
+            fout<<HuffCode[i].bit[j];
+        fout<<endl;
     }
 }
 
