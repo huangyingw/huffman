@@ -59,14 +59,14 @@ public:
 	~Huffman();
 	void PrintWeight();
 	void HuffmanCode();
-	void HuffmanTree(HNodeType HuffNode[],int n);
+	void HuffmanTree(HNodeType HuffNode[]);
 };
 
-void Huffman::HuffmanTree(HNodeType HuffNode[],int n)
+void Huffman::HuffmanTree(HNodeType HuffNode[])
 {
   	int i,j,m1,m2,x1,x2,temp1;
   	char temp2;
-  	for (i=0;i<2*n-1;i++)      /*结点初始化*/
+  	for (i=0;i<2*count-1;i++)      /*结点初始化*/
   	{
   	  HuffNode[i].letter=0;
   	  HuffNode[i].weight=0;
@@ -74,9 +74,9 @@ void Huffman::HuffmanTree(HNodeType HuffNode[],int n)
   	  HuffNode[i].lchild=-1;
   	  HuffNode[i].rchild=-1;
   	}
-  	for (i=0;i<n-1;i++)
+  	for (i=0;i<count-1;i++)
 		{
-  	  for (j=i+1;j<n-1;j++) /*对输入字符按权值大小进行排序*/
+  	  for (j=i+1;j<count-1;j++) /*对输入字符按权值大小进行排序*/
   		{  	
   	    if (data[j].num>data[i].num)
   	    {
@@ -89,16 +89,16 @@ void Huffman::HuffmanTree(HNodeType HuffNode[],int n)
   	    }
   	  }
 		}
-  	for (i=0;i<n;i++)
+  	for (i=0;i<count;i++)
   	{
   	  HuffNode[i].weight=data[i].num;
   	  HuffNode[i].letter=data[i].s;
   	}
-  	for (i=0;i<n-1;i++)        /*构造huffman树*/
+  	for (i=0;i<count-1;i++)        /*构造huffman树*/
   	{
   	  m1=m2=MAXVALUE;
   	  x1=x2=0;
-  	  for (j=0;j<n+i;j++)/*寻找权值最小与次小的结点*/
+  	  for (j=0;j<count+i;j++)/*寻找权值最小与次小的结点*/
   	  {
   	    if (HuffNode[j].parent==-1&&HuffNode[j].weight<m1)
   	    {
@@ -113,11 +113,11 @@ void Huffman::HuffmanTree(HNodeType HuffNode[],int n)
   	      x2=j;
   	    }
   	  }
-  	  HuffNode[x1].parent=n+i;
-  	  HuffNode[x2].parent=n+i;         /*权值最小与次小的结点进行组合*/
-  	  HuffNode[n+i].weight=HuffNode[x1].weight+HuffNode[x2].weight;
-  	  HuffNode[n+i].lchild=x1;
-  	  HuffNode[n+i].rchild=x2;
+  	  HuffNode[x1].parent=count+i;
+  	  HuffNode[x2].parent=count+i;         /*权值最小与次小的结点进行组合*/
+  	  HuffNode[count+i].weight=HuffNode[x1].weight+HuffNode[x2].weight;
+  	  HuffNode[count+i].lchild=x1;
+  	  HuffNode[count+i].rchild=x2;
   	}
 } 	
 
@@ -127,7 +127,7 @@ void Huffman::HuffmanCode()
     HCodeType HuffCode[MAXLEAF],cd;
     int i,j,c,p;
 
-    HuffmanTree(HuffNode,count);
+    HuffmanTree(HuffNode);
 
     for (i=0;i<count;i++)     /*按结点位置进行编码*/
     {
@@ -200,10 +200,10 @@ Huffman::Huffman()
 
 void Huffman::PrintWeight()
 {
-	fout<<"different letters:"<<count<<"\n";
+	fout<<"different letters:"<<count<<endl;
   for (int nav=0;nav<count;nav++)
   {
       fout<<data[nav].s<<" ";
-      fout<<"weight:"<<data[nav].num<<"\n";
+      fout<<"weight:"<<data[nav].num<<endl;
   }
 }
