@@ -193,8 +193,8 @@ Huffman::Huffman()
       }
       user_input++;
   }
-  printf("\n");
-  printf("         different letters:%d\n",count);
+  fout<<"\n";
+  fout<<"         different letters:"<<count<<"\n";
 
   for (i=0;i<count;i++)
   {
