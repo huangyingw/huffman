@@ -14,5 +14,6 @@ int main()
 {
     Huffman *huffman=new Huffman();
     huffman->PrintWeight();
+    huffman->HuffmanCode();
 }
 

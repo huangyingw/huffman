@@ -151,7 +151,7 @@ void Huffman::HuffmanCode()
     for (i=0;i<count;i++)
     {
         HuffCode[i].letter=HuffNode[i].letter;
-        fout<<"         "<<HuffCode[i].letter<<" ";
+        fout<<HuffCode[i].letter<<" ";
 
         for (j=HuffCode[i].start+1;j<count;j++)
             fout<<HuffCode[i].bit[j];
@@ -197,7 +197,7 @@ Huffman::Huffman()
       }
       user_input++;
   }
-  HuffmanCode();
+  
 
 }
 
@@ -206,7 +206,7 @@ void Huffman::PrintWeight()
 	fout<<"different letters:"<<count<<"\n";
   for (int nav=0;nav<count;nav++)
   {
-      fout<<"         "<<data[nav].s<<" ";
+      fout<<data[nav].s<<" ";
       fout<<"weight:"<<data[nav].num<<"\n";
   }
 }
