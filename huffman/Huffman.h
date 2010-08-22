@@ -64,8 +64,7 @@ public:
 
 void Huffman::HuffmanTree(HNodeType HuffNode[])
 {
-  	int i,j,m1,m2,x1,x2,temp1;
-  	char temp2;
+  	int i,j,m1,m2,x1,x2;
   	for (i=0;i<2*count-1;i++)      /*结点初始化*/
   	{
   	  HuffNode[i].letter=0;
