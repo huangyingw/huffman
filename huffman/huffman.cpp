@@ -33,11 +33,6 @@ typedef struct    /*编码类型定义*/
     int start;
 }HCodeType;
 
-typedef struct  /*输入符号的类型*/
-{
-    char s;
-    int num;
-}lable;
 
 void HuffmanTree(HNodeType HuffNode[],int n,lable a[])
 {
@@ -135,41 +130,20 @@ void HuffmanCode(int n,lable a[])
 
 int main()
 {
-    lable data[30];
-    char s[100],*user_input;
-    int i,count=0;
+    
     Huffman *huffman=new Huffman();
     {
-        user_input=s;
-        while (*user_input)     /*计算字符个数与出现次数(即权值)*/
-        {
-            for (i=0;i<=count+1;i++)
-            {
-                if (data[i].s==0)
-                {
-                    data[i].s=*user_input;
-                    data[i].num++;
-                    count++;
-                    break;
-                }
-                else if (data[i].s==*user_input)
-                {
-                    data[i].num++;
-                    break;
-                }
-            }
-            user_input++;
-        }
-        printf("\n");
-        printf("         different letters:%d\n",count);
+        
+        //printf("\n");
+        //printf("         different letters:%d\n",count);
 
-        for (i=0;i<count;i++)
-        {
-            printf("         %c ",data[i].s);
-            printf("weight:%d\n",data[i].num);
-        }
-        HuffmanCode(count,data);
-        count=0;
+        //for (i=0;i<count;i++)
+        //{
+        //    printf("         %c ",data[i].s);
+        //    printf("weight:%d\n",data[i].num);
+        //}
+        //HuffmanCode(count,data);
+        //count=0;
     }
 }
 

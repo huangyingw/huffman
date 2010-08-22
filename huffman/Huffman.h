@@ -10,6 +10,12 @@ typedef struct
     int right;//右结点
 }HuffNode;
 
+typedef struct  /*输入符号的类型*/
+{
+    char s;
+    int num;
+}lable;
+
 typedef struct
 {
     char cd[MAX];
@@ -24,6 +30,7 @@ private:
 	HuffCode *huffCode;
 
 public:
+	lable data[30];
 	Huffman();
 	void CreateHuffman();
 	void HuffmanEncode();//use the created tree to encode Huffman
@@ -32,17 +39,39 @@ public:
 
 Huffman::Huffman()
 {
-/*
+	char s[100],*user_input;
+	int i,count=0;
+
 	cout<<"         /    求哈夫曼编码,直到输入为end结束!            /"<<endl;
-  printf("         Input some letters:");
-  scanf("%s",s);
-  if (!strcmp(s,"end"))
-      exit(0);
-  for (i=0;i<30;i++)
+	printf("         Input some letters:");
+	scanf("%s",s);
+	if (!strcmp(s,"end"))
+	  exit(0);
+	for (i=0;i<30;i++)
+	{
+	    data[i].s=0;
+		data[i].num=0;
+	}
+	user_input=s;
+  while (*user_input)     /*计算字符个数与出现次数(即权值)*/
   {
-      data[i].s=0;
-      data[i].num=0;
-  }*/
+      for (i=0;i<=count+1;i++)
+      {
+          if (data[i].s==0)
+          {
+              data[i].s=*user_input;
+              data[i].num++;
+              count++;
+              break;
+          }
+          else if (data[i].s==*user_input)
+          {
+              data[i].num++;
+              break;
+          }
+      }
+      user_input++;
+  }
 }
 
 void Huffman::CreateHuffman()
