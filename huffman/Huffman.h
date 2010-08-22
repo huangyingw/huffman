@@ -161,11 +161,7 @@ Huffman::Huffman()
 	char *user_input;
 	int i,count=0;
 
-	printf("         Input some letters:");
-	//scanf("%s",s);
 	char s[100]="feifjakdfjioejfkdsifwfasdfawffawefawefawfafds";
-	if (!strcmp(s,"end"))
-	  exit(0);
 	for (i=0;i<30;i++)
 	{
 	    data[i].s=0;
