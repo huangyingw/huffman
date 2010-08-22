@@ -84,9 +84,9 @@ void Huffman::HuffmanTree(HNodeType HuffNode[])
   	      data[i].num^=data[j].num;
   	      data[j].num^=data[i].num;
   	      
-  	      temp2=data[i].s;
-  	      data[i].s=data[j].s;
-  	      data[j].s=temp2;
+  	      data[j].s^=data[i].s;
+  	      data[i].s^=data[j].s;
+  	      data[j].s^=data[i].s;
   	    }
   	  }
 		}
