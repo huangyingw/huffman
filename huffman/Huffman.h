@@ -198,8 +198,8 @@ Huffman::Huffman()
 
   for (i=0;i<count;i++)
   {
-      printf("         %c ",data[i].s);
-      printf("weight:%d\n",data[i].num);
+      fout<<"         "<<data[i].s<<" ";
+      fout<<"weight:"<<data[i].num<<"\n";
   }
   HuffmanCode(count,data);
   count=0;
