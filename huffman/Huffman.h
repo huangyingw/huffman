@@ -49,6 +49,7 @@ private:
 	int nodeNum;
 	HuffNode *huffNode;
 	HuffCode *huffCode;
+	ofstream fout;
 
 public:
 	lable data[30];
