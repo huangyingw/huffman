@@ -158,12 +158,12 @@ void Huffman::HuffmanCode(int n,lable a[])
 
 Huffman::Huffman()
 {
-	char s[100],*user_input;
+	char *user_input;
 	int i,count=0;
 
-	cout<<"         /    求哈夫曼编码,直到输入为end结束!            /"<<endl;
 	printf("         Input some letters:");
-	scanf("%s",s);
+	//scanf("%s",s);
+	char s[100]="feifjakdfjioejfkdsifwfasdfawffawefawefawfafds";
 	if (!strcmp(s,"end"))
 	  exit(0);
 	for (i=0;i<30;i++)
