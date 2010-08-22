@@ -159,6 +159,7 @@ void Huffman::HuffmanCode(int n,lable a[])
 
 Huffman::Huffman()
 {
+	fout.open("output.txt");
 	char *user_input;
 	int i,count=0;
 
