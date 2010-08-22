@@ -54,6 +54,7 @@ private:
 public:
 	lable data[30];
 	Huffman();
+	~Huffman();
 	void CreateHuffman();
 	void HuffmanCode(int n,lable a[]);
 	void HuffmanTree(HNodeType HuffNode[],int n,lable a[]);
@@ -155,6 +156,11 @@ void Huffman::HuffmanCode(int n,lable a[])
             printf("%d",HuffCode[i].bit[j]);
         printf("\n");
     }
+}
+
+Huffman::~Huffman()
+{
+	fout.close();
 }
 
 Huffman::Huffman()
