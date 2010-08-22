@@ -1,6 +1,27 @@
 #include<iostream>
 using namespace std;
 
+#define MAXVALUE 10000  /*权值最大值*/
+#define MAXLEAF 30 /*叶子最多个数*/
+#define MAXNODE MAXLEAF*2-1    /* 结点数的个数*/
+#define MAXBIT 50        /*编码的最大位数*/
+
+typedef struct node   /*结点类型定义*/
+{
+    char letter;
+    int weight;
+    int parent;
+    int lchild;
+    int rchild;
+}HNodeType;
+
+typedef struct    /*编码类型定义*/
+{
+    char letter;
+    int bit[MAXBIT];
+    int start;
+}HCodeType;
+
 typedef struct 
 {
     char data; //结点值
@@ -33,9 +54,47 @@ public:
 	lable data[30];
 	Huffman();
 	void CreateHuffman();
+	void HuffmanCode(int n,lable a[]);
 	void HuffmanEncode();//use the created tree to encode Huffman
 	void HuffmanDecode();//use the created tree to decode Huffman
 };
+
+void Huffman::HuffmanCode(int n,lable a[])
+{
+    HNodeType HuffNode[MAXNODE];
+    HCodeType HuffCode[MAXLEAF],cd;
+    int i,j,c,p;
+
+    /*HuffmanTree(HuffNode,n,a);*/
+
+    for (i=0;i<n;i++)     /*按结点位置进行编码*/
+    {
+        cd.start=n-1;
+        c=i;
+        p=HuffNode[c].parent;
+        while (p!=-1)
+        {
+            if (HuffNode[p].lchild==c)
+                cd.bit[cd.start]=0;
+            else cd.bit[cd.start]=1;
+            cd.start--;
+            c=p;
+            p=HuffNode[c].parent;
+        }
+        for (j=cd.start+1;j<n;j++)    /*储存编码*/
+            HuffCode[i].bit[j]=cd.bit[j];
+        HuffCode[i].start=cd.start;
+    }
+    for (i=0;i<n;i++)
+    {
+        HuffCode[i].letter=HuffNode[i].letter;
+        printf("         %c ",HuffCode[i].letter);
+
+        for (j=HuffCode[i].start+1;j<n;j++)
+            printf("%d",HuffCode[i].bit[j]);
+        printf("\n");
+    }
+}
 
 Huffman::Huffman()
 {
@@ -72,6 +131,17 @@ Huffman::Huffman()
       }
       user_input++;
   }
+  printf("\n");
+  printf("         different letters:%d\n",count);
+
+  for (i=0;i<count;i++)
+  {
+      printf("         %c ",data[i].s);
+      printf("weight:%d\n",data[i].num);
+  }
+  HuffmanCode(count,data);
+  count=0;
+
 }
 
 void Huffman::CreateHuffman()
