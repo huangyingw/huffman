@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #define MAX 21
-#include "Huffman.h"
+
 
 #include<stdio.h>
 #include<conio.h>
@@ -12,6 +12,8 @@
 #include<stdlib.h>
 
 using namespace std;
+
+#include "Huffman.h"
 
 int main()
 {
