@@ -193,8 +193,7 @@ Huffman::Huffman()
       }
       user_input++;
   }
-  fout<<"\n";
-  fout<<"         different letters:"<<count<<"\n";
+  fout<<"different letters:"<<count<<"\n";
 
   for (i=0;i<count;i++)
   {
@@ -202,7 +201,6 @@ Huffman::Huffman()
       fout<<"weight:"<<data[i].num<<"\n";
   }
   HuffmanCode(count,data);
-  count=0;
 
 }
 
