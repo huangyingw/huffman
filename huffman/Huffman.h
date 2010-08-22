@@ -59,7 +59,7 @@ public:
 	~Huffman();
 	void CreateHuffman();
 	void PrintWeight();
-	void HuffmanCode(int n,lable a[]);
+	void HuffmanCode();
 	void HuffmanTree(HNodeType HuffNode[],int n,lable a[]);
 };
 
@@ -122,17 +122,17 @@ void Huffman::HuffmanTree(HNodeType HuffNode[],int n,lable a[])
   	}
 } 	
 
-void Huffman::HuffmanCode(int n,lable a[])
+void Huffman::HuffmanCode()
 {
     HNodeType HuffNode[MAXNODE];
     HCodeType HuffCode[MAXLEAF],cd;
     int i,j,c,p;
 
-    HuffmanTree(HuffNode,n,a);
+    HuffmanTree(HuffNode,count,data);
 
-    for (i=0;i<n;i++)     /*按结点位置进行编码*/
+    for (i=0;i<count;i++)     /*按结点位置进行编码*/
     {
-        cd.start=n-1;
+        cd.start=count-1;
         c=i;
         p=HuffNode[c].parent;
         while (p!=-1)
@@ -144,16 +144,16 @@ void Huffman::HuffmanCode(int n,lable a[])
             c=p;
             p=HuffNode[c].parent;
         }
-        for (j=cd.start+1;j<n;j++)    /*储存编码*/
+        for (j=cd.start+1;j<count;j++)    /*储存编码*/
             HuffCode[i].bit[j]=cd.bit[j];
         HuffCode[i].start=cd.start;
     }
-    for (i=0;i<n;i++)
+    for (i=0;i<count;i++)
     {
         HuffCode[i].letter=HuffNode[i].letter;
         fout<<"         "<<HuffCode[i].letter<<" ";
 
-        for (j=HuffCode[i].start+1;j<n;j++)
+        for (j=HuffCode[i].start+1;j<count;j++)
             fout<<HuffCode[i].bit[j];
         fout<<endl;
     }
@@ -197,7 +197,7 @@ Huffman::Huffman()
       }
       user_input++;
   }
-  HuffmanCode(count,data);
+  HuffmanCode();
 
 }
 
