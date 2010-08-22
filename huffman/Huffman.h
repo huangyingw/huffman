@@ -58,8 +58,6 @@ public:
 	void CreateHuffman();
 	void HuffmanCode(int n,lable a[]);
 	void HuffmanTree(HNodeType HuffNode[],int n,lable a[]);
-	void HuffmanEncode();//use the created tree to encode Huffman
-	void HuffmanDecode();//use the created tree to decode Huffman
 };
 
 void Huffman::HuffmanTree(HNodeType HuffNode[],int n,lable a[])
@@ -245,55 +243,5 @@ void Huffman::CreateHuffman()
 		huffNode[i].left=l;
 		huffNode[i].right=r;
 		huffNode[i].weight=m1+m2;
-	}
-}
-
-void Huffman::HuffmanEncode()
-{
-	//接下是根据huffman树进行编码
-	for(int i=1;i<=nodeNum;i++)
-	{
-		huffCode[i].start=0;
-		int child=i;
-		int parent=huffNode[child].parent;
-		while(parent!=0)
-		{
-			if(huffNode[parent].left==child)
-				huffCode[i].cd[huffCode[i].start++]='0';
-			else if(huffNode[parent].right==child)
-				huffCode[i].cd[huffCode[i].start++]='1';
-			child=parent;
-			parent=huffNode[child].parent;
-		}
-		for(int j=huffCode[i].start-1;j>=0;j--)
-		{
-			cout<<huffCode[i].cd[j];
-		}
-		cout<<endl;
-	}
-}
-
-void Huffman::HuffmanDecode()
-{
-	//the following are decode the Huffman using the created tree
-	for(int i=1;i<=nodeNum;i++)
-	{
-		huffCode[i].start=0;
-		int child=i;
-		int parent=huffNode[child].parent;
-		while(parent!=0)
-		{
-			if(huffNode[parent].left==child)
-				huffCode[i].cd[huffCode[i].start++]='0';
-			else if(huffNode[parent].right==child)
-				huffCode[i].cd[huffCode[i].start++]='1';
-			child=parent;
-			parent=huffNode[child].parent;
-		}
-		for(int j=huffCode[i].start-1;j>=0;j--)
-		{
-			cout<<huffCode[i].cd[j];
-		}
-		cout<<endl;
 	}
 }
