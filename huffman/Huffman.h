@@ -80,9 +80,10 @@ void Huffman::HuffmanTree(HNodeType HuffNode[])
   		{  	
   	    if (data[j].num>data[i].num)
   	    {
-  	      temp1=data[i].num;
-  	      data[i].num=data[j].num;
-  	      data[j].num=temp1;
+  	      data[j].num^=data[i].num;
+  	      data[i].num^=data[j].num;
+  	      data[j].num^=data[i].num;
+  	      
   	      temp2=data[i].s;
   	      data[i].s=data[j].s;
   	      data[j].s=temp2;
