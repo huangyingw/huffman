@@ -64,7 +64,7 @@ public:
 
 void Huffman::HuffmanTree(HNodeType HuffNode[])
 {
-  	int i,j,m1,m2,x1,x2;
+  	int i,j,min1,min2,x1,x2;
   	for (i=0;i<2*count-1;i++)      /*结点初始化*/
   	{
   	  HuffNode[i].letter=0;
@@ -96,20 +96,20 @@ void Huffman::HuffmanTree(HNodeType HuffNode[])
   	}
   	for (i=0;i<count-1;i++)        /*构造huffman树*/
   	{
-  	  m1=m2=MAXVALUE;
+  	  min1=min2=MAXVALUE;
   	  x1=x2=0;
   	  for (j=0;j<count+i;j++)/*寻找权值最小与次小的结点*/
   	  {
-  	    if (HuffNode[j].parent==-1&&HuffNode[j].weight<m1)
+  	    if (HuffNode[j].parent==-1&&HuffNode[j].weight<min1)
   	    {
-  	      m2=m1;
+  	      min2=min1;
   	      x2=x1;
-  	      m1=HuffNode[j].weight;
+  	      min1=HuffNode[j].weight;
   	      x1=j;
   	    }
-  	    else if (HuffNode[j].parent==-1&&HuffNode[j].weight<m2)
+  	    else if (HuffNode[j].parent==-1&&HuffNode[j].weight<min2)
   	    {
-  	      m2=HuffNode[j].weight;
+  	      min2=HuffNode[j].weight;
   	      x2=j;
   	    }
   	  }
