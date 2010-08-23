@@ -137,8 +137,9 @@ void Huffman::HuffmanCode()
         while (p!=-1)
         {
             if (HuffNode[p].lchild==c)
-                cd.bit[cd.start]=0;
-            else cd.bit[cd.start]=1;
+							cd.bit[cd.start]=0;
+            else 
+            	cd.bit[cd.start]=1;
             cd.start--;
             c=p;
             p=HuffNode[c].parent;
