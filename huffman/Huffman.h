@@ -64,7 +64,7 @@ public:
 
 void Huffman::HuffmanTree(HNodeType HuffNode[])
 {
-  	int i,j,min1,min2,x1,x2;
+  	int i,j,min1,min2,min_index1,min_index2;
   	for (i=0;i<2*count-1;i++)      /*结点初始化*/
   	{
   	  HuffNode[i].letter=0;
@@ -97,27 +97,27 @@ void Huffman::HuffmanTree(HNodeType HuffNode[])
   	for (i=0;i<count-1;i++)        /*构造huffman树*/
   	{
   	  min1=min2=MAXVALUE;
-  	  x1=x2=0;
+  	  min_index1=min_index2=0;
   	  for (j=0;j<count+i;j++)/*寻找权值最小与次小的结点*/
   	  {
   	    if (HuffNode[j].parent==-1&&HuffNode[j].weight<min1)
   	    {
   	      min2=min1;
-  	      x2=x1;
+  	      min_index2=min_index1;
   	      min1=HuffNode[j].weight;
-  	      x1=j;
+  	      min_index1=j;
   	    }
   	    else if (HuffNode[j].parent==-1&&HuffNode[j].weight<min2)
   	    {
   	      min2=HuffNode[j].weight;
-  	      x2=j;
+  	      min_index2=j;
   	    }
   	  }
-  	  HuffNode[x1].parent=count+i;
-  	  HuffNode[x2].parent=count+i;         /*权值最小与次小的结点进行组合*/
-  	  HuffNode[count+i].weight=HuffNode[x1].weight+HuffNode[x2].weight;
-  	  HuffNode[count+i].lchild=x1;
-  	  HuffNode[count+i].rchild=x2;
+  	  HuffNode[min_index1].parent=count+i;
+  	  HuffNode[min_index2].parent=count+i;         /*权值最小与次小的结点进行组合*/
+  	  HuffNode[count+i].weight=HuffNode[min_index1].weight+HuffNode[min_index2].weight;
+  	  HuffNode[count+i].lchild=min_index1;
+  	  HuffNode[count+i].rchild=min_index2;
   	}
 } 	
 
