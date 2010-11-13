@@ -4,9 +4,9 @@
 #define MAX 21
 #include "Huffman.h"
 
-void main()
+int main()
 {
-
+  return 0;
 }
 
 

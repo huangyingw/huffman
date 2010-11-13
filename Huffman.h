@@ -1,6 +1,7 @@
+#include <iostream>
 using namespace std;
 
-typedef struct 
+typedef struct
 {
   char data; //½áµãÖµ
   int weight; //
