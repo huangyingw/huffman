@@ -24,16 +24,10 @@ class Huffman
     HuffCode *huffCode;
 
   public:
-    Huffman();
     void CreateHuffman();
     void HuffmanEncode();//use the created tree to encode Huffman
     void HuffmanDecode();//use the created tree to decode Huffman
 };
-
-Huffman::Huffman()
-{
-
-}
 
 void Huffman::CreateHuffman()
 {

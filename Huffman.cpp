@@ -3,6 +3,8 @@
 
 int main()
 {
+  Huffman huffman;
+  huffman.CreateHuffman();
   return 0;
 }
 
