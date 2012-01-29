@@ -1,12 +1,10 @@
 public class huffman {
-	
-	typedef struct
-	{
-	  char data; //����ֵ
-	  int weight; //
-	  int parent; //�����
-	  int left; //�����
-	  int right;//�ҽ��
+	Struct	{
+	  char data;
+	  int weight;
+	  int parent;
+	  int left;
+	  int right;
 	}HuffNode;
 
 	typedef struct
@@ -30,20 +28,13 @@ public class huffman {
 
 	void Huffman::CreateHuffman()
 	{
-	  //�Ȱ�������ʼ��
 	  for(int i=1;i<=2*nodeNum-1;i++)
 	    huffNode[i].parent=huffNode[i].left=huffNode[i].right=0;
 
-	  //���²�������huffman������Ӧ�û��иĽ������ء�
-	  //�˴�Ϊʲô��2*nodeNum-1?
 	  for(int i=nodeNum+1;i<=2*nodeNum-1;i++)
 	  {
-	    //l�洢���ӽڵ��ı��ţ�r�洢���ӽڵ��ı��
-	    //�������ӽڵ�ҪС�����ӽڵ
-	    //l����С�ڵ
 	    int l,r;
 	    l=r=0;
-	    //�˴�m1�洢��Сֵ��m2�洢��Сֵ
 	    int m1,m2;
 	    m1=m2=20000;
 	    for(int j=1;j<i;j++)
@@ -70,7 +61,6 @@ public class huffman {
 
 	void Huffman::HuffmanEncode()
 	{
-	  //�����Ǹ���huffman�����б��
 	  for(int i=1;i<=nodeNum;i++)
 	  {
 	    huffCode[i].start=0;
@@ -87,9 +77,9 @@ public class huffman {
 	    }
 	    for(int j=huffCode[i].start-1;j>=0;j--)
 	    {
-	      cout<<huffCode[i].cd[j];
+	      System.out.println(huffCode[i].cd[j]);
 	    }
-	    cout<<endl;
+	    System.out.println();
 	  }
 	}
 
@@ -112,9 +102,9 @@ public class huffman {
 	    }
 	    for(int j=huffCode[i].start-1;j>=0;j--)
 	    {
-	      cout<<huffCode[i].cd[j];
+	      System.out.println(huffCode[i].cd[j]);
 	    }
-	    cout<<endl;
+	    System.out.println();
 	  }
 	}
 	static public void main(String[] args) {
