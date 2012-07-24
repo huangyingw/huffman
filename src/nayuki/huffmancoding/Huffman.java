@@ -20,27 +20,19 @@ public class Huffman {
 
 	// encode the input string
 	public String enCodeString(String inString) {
-
 		StringBuffer temp = new StringBuffer();
 		for (int i = 0; i < inString.length(); i++) {
-
 			int ch = inString.charAt(i);
 			int j = 1;
 			for (; huffmanTree.get(j).charTag != ch && j < charset.size() + 1; j++) {
-
 			}
 			if (j <= charset.size()) {
-
 				temp.append(huffmanCode.get(j));
 			} else {
-
 				temp.append(ch);
 			}
-
 		}
-
 		return temp.toString();
-
 	}
 
 	// decode the string
