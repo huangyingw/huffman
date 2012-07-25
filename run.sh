@@ -1,2 +1,0 @@
-make -B \
-&& ./Huffman.exe
