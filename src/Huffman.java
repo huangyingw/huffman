@@ -1,10 +1,5 @@
 public class Huffman {
 
-	static public void main(String[] args) {
-		Huffman hman = new Huffman();
-		hman.CreateHuffman();
-	}
-
 	private HuffCode[] huffCode;
 	private HuffNode[] huffNode;
 

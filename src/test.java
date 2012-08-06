@@ -9,7 +9,8 @@ public class test {
 		hasmap.put('c', 8);
 		hasmap.put('d', 10);
 
-		Huffman huffman = new Huffman();
+		Huffman hman = new Huffman();
+		hman.CreateHuffman();
 		// String temp = huffman.enCodeString("abcd");
 		// System.out.println(temp);
 		// System.out.println(huffman.deCodeString(temp));
