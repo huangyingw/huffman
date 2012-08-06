@@ -78,8 +78,6 @@ public class Huffman {
 				huffmanTree.get(i).rChild = leftChild;
 				huffmanTree.get(i).lChild = rightChild;
 			}
-			huffmanTree.get(i).weight = huffmanTree.get(i).weight
-					+ huffmanTree.get(i).weight;
 		}
 	}
 
