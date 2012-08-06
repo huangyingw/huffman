@@ -50,33 +50,33 @@ public class Huffman {
 
 	private void creatHuffmanTree() {
 		initTree();
-		int min_child1;
-		int min_child2;
+		int leftChild;
+		int rightChild;
 		for (int i = charset.size() + 1; i < 2 * charset.size(); i++) {
-			min_child1 = 0;
-			min_child2 = 0;
+			leftChild = 0;
+			rightChild = 0;
 			for (int j = 1; j < i; j++) {
 				if (huffmanTree.get(j).parent == 0) {
-					if (huffmanTree.get(j).weight < huffmanTree.get(min_child1).weight
+					if (huffmanTree.get(j).weight < huffmanTree.get(leftChild).weight
 							|| huffmanTree.get(j).weight < huffmanTree
-									.get(min_child2).weight) {
-						if (huffmanTree.get(min_child1).weight < huffmanTree
-								.get(min_child2).weight) {
-							min_child2 = j;
+									.get(rightChild).weight) {
+						if (huffmanTree.get(leftChild).weight < huffmanTree
+								.get(rightChild).weight) {
+							rightChild = j;
 						} else {
-							min_child1 = j;
+							leftChild = j;
 						}
 					}
 				}
 			}
-			huffmanTree.get(min_child1).parent = i;
-			huffmanTree.get(min_child2).parent = i;
-			if (min_child1 < min_child2) {
-				huffmanTree.get(i).lChild = min_child1;
-				huffmanTree.get(i).rChild = min_child2;
+			huffmanTree.get(leftChild).parent = i;
+			huffmanTree.get(rightChild).parent = i;
+			if (leftChild < rightChild) {
+				huffmanTree.get(i).lChild = leftChild;
+				huffmanTree.get(i).rChild = rightChild;
 			} else {
-				huffmanTree.get(i).rChild = min_child1;
-				huffmanTree.get(i).lChild = min_child2;
+				huffmanTree.get(i).rChild = leftChild;
+				huffmanTree.get(i).lChild = rightChild;
 			}
 			huffmanTree.get(i).weight = huffmanTree.get(i).weight
 					+ huffmanTree.get(i).weight;
