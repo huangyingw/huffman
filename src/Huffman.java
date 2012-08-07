@@ -6,13 +6,19 @@ public class Huffman {
 		hman.CreateHuffman();
 		hman.PrintHuffNodes();
 		hman.HuffmanEncode();
+		hman.InitHuffCodes();
 		hman.HuffmanDecode();
 	}
 
-	private HuffCode[] huffCode;
+	private HuffCode[] huffCodes;
 	private HuffNode[] huffNodes;
 
 	private int nodeNum;
+
+	public void InitHuffCodes() {
+		huffCodes = new HuffCode[] { new HuffCode(), new HuffCode(),
+				new HuffCode(), new HuffCode(), new HuffCode() };
+	}
 
 	public void CreateHuffman() {
 		for (int i = 0; i < huffNodes.length; i++)
@@ -53,19 +59,19 @@ public class Huffman {
 	void HuffmanDecode() {
 		// the following are decode the Huffman using the created tree
 		for (int i = 0; i <= 4; i++) {
-			huffCode[i].start = 0;
+			huffCodes[i].start = 0;
 			int child = i;
 			int parent = huffNodes[child].parent;
 			while (parent != 0) {
 				if (huffNodes[parent].left == child)
-					huffCode[i].cd[huffCode[i].start++] = '0';
+					huffCodes[i].cd[huffCodes[i].start++] = '0';
 				else if (huffNodes[parent].right == child)
-					huffCode[i].cd[huffCode[i].start++] = '1';
+					huffCodes[i].cd[huffCodes[i].start++] = '1';
 				child = parent;
 				parent = huffNodes[child].parent;
 			}
-			for (int j = huffCode[i].start - 1; j >= 0; j--) {
-				System.out.println(huffCode[i].cd[j]);
+			for (int j = huffCodes[i].start - 1; j >= 0; j--) {
+				System.out.print(huffCodes[i].cd[j]);
 			}
 			System.out.println();
 		}
@@ -73,19 +79,19 @@ public class Huffman {
 
 	void HuffmanEncode() {
 		for (int i = 1; i <= nodeNum; i++) {
-			huffCode[i].start = 0;
+			huffCodes[i].start = 0;
 			int child = i;
 			int parent = huffNodes[child].parent;
 			while (parent != 0) {
 				if (huffNodes[parent].left == child)
-					huffCode[i].cd[huffCode[i].start++] = '0';
+					huffCodes[i].cd[huffCodes[i].start++] = '0';
 				else if (huffNodes[parent].right == child)
-					huffCode[i].cd[huffCode[i].start++] = '1';
+					huffCodes[i].cd[huffCodes[i].start++] = '1';
 				child = parent;
 				parent = huffNodes[child].parent;
 			}
-			for (int j = huffCode[i].start - 1; j >= 0; j--) {
-				System.out.println(huffCode[i].cd[j]);
+			for (int j = huffCodes[i].start - 1; j >= 0; j--) {
+				System.out.println(huffCodes[i].cd[j]);
 			}
 			System.out.println();
 		}
