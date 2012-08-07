@@ -52,7 +52,7 @@ public class Huffman {
 
 	void HuffmanDecode() {
 		// the following are decode the Huffman using the created tree
-		for (int i = 1; i <= nodeNum; i++) {
+		for (int i = 0; i <= 4; i++) {
 			huffCode[i].start = 0;
 			int child = i;
 			int parent = huffNodes[child].parent;
