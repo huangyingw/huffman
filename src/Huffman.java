@@ -38,17 +38,14 @@ public class Huffman {
 			huffNodes[i].left = l;
 			huffNodes[i].right = r;
 			huffNodes[i].weight = m1 + m2;
-			System.out.println(huffNodes[i].data + ",weight->"
-					+ huffNodes[i].weight + ",parent->" + huffNodes[i].parent
-					+ ",left->" + huffNodes[i].left + ",right->"
-					+ huffNodes[i].right);
 		}
 	}
 
 	public void PrintHuffNodes() {
 		for (int i = 0; i < huffNodes.length; i++) {
-			System.out.println(huffNodes[i].data + "," + huffNodes[i].weight
-					+ "," + huffNodes[i].parent + "," + huffNodes[i].left + ","
+			System.out.println(huffNodes[i].data + ",index->" + i + ",weight->"
+					+ huffNodes[i].weight + ",parent->" + huffNodes[i].parent
+					+ ",left->" + huffNodes[i].left + ",right->"
 					+ huffNodes[i].right);
 		}
 	}
