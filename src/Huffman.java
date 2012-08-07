@@ -1,8 +1,18 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class Huffman {
 
 	static public void main(String[] args) {
 		Huffman hman = new Huffman();
-		hman.InitHuffNode();
+		Map<Character, Integer> hashMap = new HashMap<Character, Integer>();
+		hashMap.put('a', 4);
+		hashMap.put('b', 6);
+		hashMap.put('c', 8);
+		hashMap.put('d', 10);
+		hashMap.put('e', 1);
+		hman.InitHuffNode(hashMap);
 		hman.CreateHuffman();
 		hman.PrintHuffNodes();
 		hman.HuffmanEncode();
@@ -98,16 +108,17 @@ public class Huffman {
 		}
 	}
 
-	public void InitHuffNode() {
-		huffNodes = new HuffNode[9];
-		huffNodes[0] = new HuffNode('a', 4);
-		huffNodes[1] = new HuffNode('b', 6);
-		huffNodes[2] = new HuffNode('c', 8);
-		huffNodes[3] = new HuffNode('d', 10);
-		huffNodes[4] = new HuffNode('e', 1);
-		huffNodes[5] = new HuffNode('x', 0);
-		huffNodes[6] = new HuffNode('x', 0);
-		huffNodes[7] = new HuffNode('x', 0);
-		huffNodes[8] = new HuffNode('x', 0);
+	public void InitHuffNode(Map map) {
+		huffNodes = new HuffNode[2 * map.size() - 1];
+		Iterator iter = map.keySet().iterator();
+		int i = 0;
+		while (iter.hasNext()) {
+			Character obj = (Character) iter.next();
+			huffNodes[i++] = new HuffNode(obj, (Integer) map.get(obj));
+
+		}
+		for (int i1 = map.size(); i1 < huffNodes.length; i1++) {
+			huffNodes[i1] = new HuffNode();
+		}
 	}
 }

@@ -5,6 +5,10 @@ public class HuffNode {
 	public int left;
 	public int right;
 
+	public HuffNode() {
+		super();
+	}
+
 	public HuffNode(char data, int weight) {
 		super();
 		this.data = data;
