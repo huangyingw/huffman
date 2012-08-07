@@ -9,7 +9,7 @@ public class Huffman {
 		charTable = map;
 		charset = map.keySet();
 		creatHuffmanTree();
-		creatHuffmanCode();
+		// creatHuffmanCode();
 	}
 
 	public String enCodeString(String inString) {
@@ -48,6 +48,14 @@ public class Huffman {
 		return temp.toString();
 	}
 
+	private void Print() {
+		for (int i = 0; i < huffmanTree.size(); i++) {
+			System.out.println(i + "," + huffmanTree.get(i).charTag
+					+ ",weight->" + huffmanTree.get(i).weight + ",parent->"
+					+ huffmanTree.get(i).parent);
+		}
+	}
+
 	private void creatHuffmanTree() {
 		initTree();
 		int leftChild;
@@ -78,6 +86,20 @@ public class Huffman {
 				huffmanTree.get(i).rChild = leftChild;
 				huffmanTree.get(i).lChild = rightChild;
 			}
+		}
+		Print();
+	}
+
+	void LevelOrder(int current, int indent) {
+		if (huffmanTree.get(current).rChild != 0) {
+			LevelOrder(huffmanTree.get(current).rChild, indent + 1);
+		}
+		for (int i = 0; i < indent; i++)
+			System.out.print("\t");
+		System.out.println(huffmanTree.get(current).charTag);
+
+		if (huffmanTree.get(current).lChild != 0) {
+			LevelOrder(huffmanTree.get(current).lChild, indent + 1);
 		}
 	}
 
@@ -131,9 +153,9 @@ public class Huffman {
 	class Node {
 		char charTag;
 		int weight;
-		int parent;
-		int lChild;
-		int rChild;
+		int parent = 0;
+		int lChild = 0;
+		int rChild = 0;
 
 		public Node(char c, int w, int p, int l, int r) {
 			charTag = c;
