@@ -53,7 +53,7 @@ public class Huffman {
 
 	void HuffmanDecode() {
 		// the following are decode the Huffman using the created tree
-		for (int i = 0; i <= 4; i++) {
+		for (int i = 0; i < nodeNum; i++) {
 			huffCodes[i].start = 0;
 			int child = i;
 			int parent = huffNodes[child].parent;
@@ -79,6 +79,7 @@ public class Huffman {
 	}
 
 	public void InitHuffNode(Map map) {
+		nodeNum = map.size();
 		huffNodes = new HuffNode[2 * map.size() - 1];
 		Iterator iter = map.keySet().iterator();
 		int i = 0;
