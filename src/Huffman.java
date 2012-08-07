@@ -70,6 +70,7 @@ public class Huffman {
 				child = parent;
 				parent = huffNodes[child].parent;
 			}
+			System.out.print(huffNodes[i].data + "->");
 			for (int j = huffCodes[i].start - 1; j >= 0; j--) {
 				System.out.print(huffCodes[i].cd[j]);
 			}
