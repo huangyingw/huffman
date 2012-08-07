@@ -40,6 +40,10 @@ public class Huffman {
 		}
 	}
 
+	public void PrintHuffNodes() {
+
+	}
+
 	void HuffmanDecode() {
 		// the following are decode the Huffman using the created tree
 		for (int i = 1; i <= nodeNum; i++) {
