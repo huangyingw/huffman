@@ -58,36 +58,37 @@ public class Huffman {
 
 	private void creatHuffmanTree() {
 		initTree();
-		int leftChild;
-		int rightChild;
-		for (int i = charset.size() + 1; i < 2 * charset.size(); i++) {
-			leftChild = 0;
-			rightChild = 0;
-			for (int j = 1; j < i; j++) {
-				if (huffmanTree.get(j).parent == 0) {
-					if (huffmanTree.get(j).weight < huffmanTree.get(leftChild).weight
-							|| huffmanTree.get(j).weight < huffmanTree
-									.get(rightChild).weight) {
-						if (huffmanTree.get(leftChild).weight < huffmanTree
-								.get(rightChild).weight) {
-							rightChild = j;
-						} else {
-							leftChild = j;
-						}
+		int leftChild;// the min index
+		int rightChild;// the second min index
+		for (int i = charset.size(); i < 2 * charset.size(); i++) {
+			leftChild = -1;
+			rightChild = -1;
+			for (int j = 0; j <= i; j++) {
+				if (huffmanTree.get(j).parent == -1) {
+					if (leftChild == -1) {
+						leftChild = j;
+						rightChild = j;
+					}
+					if (huffmanTree.get(j).weight < huffmanTree.get(leftChild).weight) {
+						rightChild = leftChild;
+						leftChild = j;
+					} else if (huffmanTree.get(j).weight < huffmanTree
+							.get(rightChild).weight) {
+						rightChild = j;
 					}
 				}
 			}
 			huffmanTree.get(leftChild).parent = i;
 			huffmanTree.get(rightChild).parent = i;
-			if (leftChild < rightChild) {
-				huffmanTree.get(i).lChild = leftChild;
-				huffmanTree.get(i).rChild = rightChild;
-			} else {
-				huffmanTree.get(i).rChild = leftChild;
-				huffmanTree.get(i).lChild = rightChild;
-			}
+
+			System.out.println(leftChild + "'s parent is " + i);
+			System.out.println(rightChild + "'s parent is " + i);
+			System.out.println();
+			huffmanTree.get(i).lChild = leftChild;
+			huffmanTree.get(i).rChild = rightChild;
+			huffmanTree.get(i).weight = huffmanTree.get(leftChild).weight
+					+ huffmanTree.get(rightChild).weight;
 		}
-		Print();
 	}
 
 	void LevelOrder(int current, int indent) {
@@ -133,15 +134,15 @@ public class Huffman {
 	private void initTree() {
 		huffmanTree = new ArrayList<Node>();
 		Iterator<Character> charIter = charset.iterator();
-		int i = 1;
+		int i = 0;
 		huffmanTree.add(0, new Node((char) 0, Integer.MAX_VALUE, 0, 0, 0));
 		while (charIter.hasNext()) {
 			Character ch = charIter.next();
 			huffmanTree.add(i, new Node(ch, charTable.get(ch), 0, 0, 0));
 			i++;
 		}
-		for (int j = charset.size() + 1; j < 2 * charset.size(); j++) {
-			huffmanTree.add(j, new Node((char) 0, 0, 0, 0, 0));
+		for (int j = charset.size(); j < 2 * charset.size(); j++) {
+			huffmanTree.add(j, new Node((char) 0, Integer.MAX_VALUE, 0, 0, 0));
 		}
 	}
 
@@ -152,8 +153,8 @@ public class Huffman {
 
 	class Node {
 		char charTag;
-		int weight;
-		int parent = 0;
+		int weight = 10000;
+		int parent = -1;
 		int lChild = 0;
 		int rChild = 0;
 
