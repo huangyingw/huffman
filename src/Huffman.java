@@ -4,6 +4,7 @@ public class Huffman {
 		Huffman hman = new Huffman();
 		hman.InitHuffNode();
 		hman.CreateHuffman();
+		hman.PrintHuffNodes();
 		hman.HuffmanEncode();
 		hman.HuffmanDecode();
 	}
@@ -14,15 +15,15 @@ public class Huffman {
 	private int nodeNum;
 
 	public void CreateHuffman() {
-		for (int i = 1; i <= 2 * nodeNum - 1; i++)
+		for (int i = 0; i < huffNodes.length; i++)
 			huffNodes[i].parent = huffNodes[i].left = huffNodes[i].right = 0;
 
-		for (int i = nodeNum + 1; i <= 2 * nodeNum - 1; i++) {
+		for (int i = 5; i < huffNodes.length; i++) {
 			int l, r;
 			l = r = 0;
 			int m1, m2;
 			m1 = m2 = 20000;
-			for (int j = 1; j < i; j++) {
+			for (int j = 0; j < i; j++) {
 				if (huffNodes[j].weight < m1 && huffNodes[j].parent == 0) {
 					m2 = m1;
 					r = l;
@@ -37,11 +38,19 @@ public class Huffman {
 			huffNodes[i].left = l;
 			huffNodes[i].right = r;
 			huffNodes[i].weight = m1 + m2;
+			System.out.println(huffNodes[i].data + ",weight->"
+					+ huffNodes[i].weight + ",parent->" + huffNodes[i].parent
+					+ ",left->" + huffNodes[i].left + ",right->"
+					+ huffNodes[i].right);
 		}
 	}
 
 	public void PrintHuffNodes() {
-
+		for (int i = 0; i < huffNodes.length; i++) {
+			System.out.println(huffNodes[i].data + "," + huffNodes[i].weight
+					+ "," + huffNodes[i].parent + "," + huffNodes[i].left + ","
+					+ huffNodes[i].right);
+		}
 	}
 
 	void HuffmanDecode() {
@@ -86,11 +95,15 @@ public class Huffman {
 	}
 
 	public void InitHuffNode() {
-		huffNodes = new HuffNode[5];
+		huffNodes = new HuffNode[9];
 		huffNodes[0] = new HuffNode('a', 4);
 		huffNodes[1] = new HuffNode('b', 6);
 		huffNodes[2] = new HuffNode('c', 8);
 		huffNodes[3] = new HuffNode('d', 10);
 		huffNodes[4] = new HuffNode('e', 1);
+		huffNodes[5] = new HuffNode('x', 0);
+		huffNodes[6] = new HuffNode('x', 0);
+		huffNodes[7] = new HuffNode('x', 0);
+		huffNodes[8] = new HuffNode('x', 0);
 	}
 }
