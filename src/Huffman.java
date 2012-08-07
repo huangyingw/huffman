@@ -8,10 +8,9 @@ public class Huffman {
 		Huffman hman = new Huffman();
 		Map<Character, Integer> hashMap = new HashMap<Character, Integer>();
 		hashMap.put('a', 4);
-		hashMap.put('b', 6);
+		hashMap.put('b', 5);
 		hashMap.put('c', 8);
 		hashMap.put('d', 10);
-		hashMap.put('e', 1);
 		hman.InitHuffNode(hashMap);
 		hman.CreateHuffman();
 		hman.PrintHuffNodes();
@@ -28,7 +27,7 @@ public class Huffman {
 		for (int i = 0; i < huffNodes.length; i++)
 			huffNodes[i].parent = huffNodes[i].left = huffNodes[i].right = 0;
 
-		for (int i = 5; i < huffNodes.length; i++) {
+		for (int i = nodeNum; i < huffNodes.length; i++) {
 			int l, r;
 			l = r = 0;
 			int m1, m2;
