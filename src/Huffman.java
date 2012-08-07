@@ -15,7 +15,6 @@ public class Huffman {
 		hman.InitHuffNode(hashMap);
 		hman.CreateHuffman();
 		hman.PrintHuffNodes();
-		hman.HuffmanEncode();
 		hman.InitHuffCodes();
 		hman.HuffmanDecode();
 	}
@@ -24,11 +23,6 @@ public class Huffman {
 	private HuffNode[] huffNodes;
 
 	private int nodeNum;
-
-	public void InitHuffCodes() {
-		huffCodes = new HuffCode[] { new HuffCode(), new HuffCode(),
-				new HuffCode(), new HuffCode(), new HuffCode() };
-	}
 
 	public void CreateHuffman() {
 		for (int i = 0; i < huffNodes.length; i++)
@@ -57,15 +51,6 @@ public class Huffman {
 		}
 	}
 
-	public void PrintHuffNodes() {
-		for (int i = 0; i < huffNodes.length; i++) {
-			System.out.println(huffNodes[i].data + ",index->" + i + ",weight->"
-					+ huffNodes[i].weight + ",parent->" + huffNodes[i].parent
-					+ ",left->" + huffNodes[i].left + ",right->"
-					+ huffNodes[i].right);
-		}
-	}
-
 	void HuffmanDecode() {
 		// the following are decode the Huffman using the created tree
 		for (int i = 0; i <= 4; i++) {
@@ -88,24 +73,9 @@ public class Huffman {
 		}
 	}
 
-	void HuffmanEncode() {
-		for (int i = 1; i <= nodeNum; i++) {
-			huffCodes[i].start = 0;
-			int child = i;
-			int parent = huffNodes[child].parent;
-			while (parent != 0) {
-				if (huffNodes[parent].left == child)
-					huffCodes[i].cd[huffCodes[i].start++] = '0';
-				else if (huffNodes[parent].right == child)
-					huffCodes[i].cd[huffCodes[i].start++] = '1';
-				child = parent;
-				parent = huffNodes[child].parent;
-			}
-			for (int j = huffCodes[i].start - 1; j >= 0; j--) {
-				System.out.println(huffCodes[i].cd[j]);
-			}
-			System.out.println();
-		}
+	public void InitHuffCodes() {
+		huffCodes = new HuffCode[] { new HuffCode(), new HuffCode(),
+				new HuffCode(), new HuffCode(), new HuffCode() };
 	}
 
 	public void InitHuffNode(Map map) {
@@ -119,6 +89,15 @@ public class Huffman {
 		}
 		for (int i1 = map.size(); i1 < huffNodes.length; i1++) {
 			huffNodes[i1] = new HuffNode();
+		}
+	}
+
+	public void PrintHuffNodes() {
+		for (int i = 0; i < huffNodes.length; i++) {
+			System.out.println(huffNodes[i].data + ",index->" + i + ",weight->"
+					+ huffNodes[i].weight + ",parent->" + huffNodes[i].parent
+					+ ",left->" + huffNodes[i].left + ",right->"
+					+ huffNodes[i].right);
 		}
 	}
 }
