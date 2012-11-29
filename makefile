@@ -1,3 +1,3 @@
 OBJECTS = Huffman.exe
-include ../../GNU_makefile_template
+include /home/huangyingw/myproject/git/makefile/GNU_makefile_template
 LOCFLAGS = -I../Huffman
